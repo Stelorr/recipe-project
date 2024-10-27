@@ -1,0 +1,31 @@
+.head {
+    color: black;
+    font-size: 100px;
+    font-weight: 100;
+    text-align: center;
+}
+
+.link-group {
+    text-align: center;
+}
+
+/* General link styling */
+.box-link {
+    display: inline-block; /* Makes the links behave like boxes */
+    padding: 15px 30px;    /* Adds space inside the link */
+    margin: 10px;          /* Adds space around the links */
+    border: 2px solid #333; /* Adds a border around the link */
+    background-color: white; /* Background color for the link */
+    color: #000;            /* Text color */
+    text-decoration: none;   /* Removes the underline */
+    font-size: 18px;         /* Text size */
+    border-radius: 5px;      /* Rounds the corners of the box */
+    text-align: center;      /* Centers the text inside the box */
+    transition: background-color 0.3s ease; /* Smooth background change on hover */
+}
+
+/* Hover effect to make it interactive */
+.box-link:hover {
+    background-color: #333; /* Changes background color on hover */
+    color: #fff;            /* Changes text color on hover */
+}
