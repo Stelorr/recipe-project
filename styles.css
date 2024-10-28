@@ -1,6 +1,7 @@
 .head {
     color: black;
     font-size: 100px;
+    font-family: sans-serif;
     font-weight: 100;
     text-align: center;
 }
@@ -11,21 +12,85 @@
 
 /* General link styling */
 .box-link {
-    display: inline-block; /* Makes the links behave like boxes */
-    padding: 15px 30px;    /* Adds space inside the link */
-    margin: 10px;          /* Adds space around the links */
-    border: 2px solid #333; /* Adds a border around the link */
-    background-color: white; /* Background color for the link */
-    color: #000;            /* Text color */
-    text-decoration: none;   /* Removes the underline */
-    font-size: 18px;         /* Text size */
-    border-radius: 5px;      /* Rounds the corners of the box */
-    text-align: center;      /* Centers the text inside the box */
-    transition: background-color 0.3s ease; /* Smooth background change on hover */
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px;
+    border: 2px solid #333;
+    background-color: white;
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Ensures that the background stays within the button boundaries */
+    background-image: linear-gradient(to right, #333 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: background-position 0.5s ease, color 0.3s ease;
 }
 
-/* Hover effect to make it interactive */
+/* Hover effect to fill background from left to right */
 .box-link:hover {
-    background-color: #333; /* Changes background color on hover */
-    color: #fff;            /* Changes text color on hover */
+    background-position: 0 0;
+    color: #fff; /* Changes text color on hover */
+}
+
+/* Styling for the collapsible sidebar */
+.collapsible-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease, width 0.3s ease; /* Smooth transition for collapsing */
+    transform: translateX(0); /* Sidebar visible */
+}
+
+/* Collapsed sidebar */
+.collapsible-sidebar.collapsed {
+    width: 50px; /* Shrink the sidebar when collapsed */
+    transform: translateX(200px); /* Move sidebar mostly off-screen */
+}
+
+/* Styling for the main content */
+main {
+    margin-right: 250px; /* Space for the sidebar */
+    padding: 20px;
+    transition: margin-right 0.3s ease; /* Smooth margin transition */
+}
+
+/* When sidebar is collapsed, main content should adjust */
+main.collapsed {
+    margin-right: 50px; /* Adjust main content margin when sidebar is collapsed */
+}
+
+/* Styling for the toggle button */
+.toggle-button {
+    position: absolute;
+    top: 20px;
+    right: -40px; /* Moves the button inside the sidebar's edge */
+    font-size: 30px;
+    border: 2px solid #333;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 1000;
+    border-radius: 5px;
+    transition: left 0.3s ease;
+}
+
+/* Button hover effect */
+.toggle-button:hover {
+    background-color: #555;
+}
+
+/* Move the toggle button when sidebar is collapsed */
+.collapsible-sidebar.collapsed .toggle-button {
+    left: -40px; /* Stays outside on collapse */
 }
